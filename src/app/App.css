@@ -1,0 +1,28 @@
+.simulator-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simulator-icon {
+  width: 60px;
+}
+
+.simulator-title {
+  font-family: "Montserrat-Bold", sans-serif;
+  text-align: center;
+  margin: 0;
+}
+.simulator-slogan {
+  font-family: "Montserrat-ExtraLight", sans-serif;
+  font-size: 0.875rem;
+  text-align: center;
+  margin: 0;
+}
+.simulator-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}

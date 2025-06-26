@@ -1,0 +1,68 @@
+.loan-summary-container {
+  width: 50%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f4;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.loan-summary-group-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.loan-summary-title {
+  font-family: "Montserrat-Regular", sans-serif;
+  color: #111827;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.loan-summary-details {
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  padding: 20px 0 0;
+  gap: 20px;
+}
+
+.value-loan-summary {
+  margin: 5px 0 0;
+}
+
+.card-summary {
+  width: 50%;
+  font-family: "Montserrat-SemiBold", sans-serif;
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.amount {
+  background: #d3f985;
+}
+
+.fee {
+  background: #fce96a;
+}
+
+.rate-bank {
+  background: #8ab4f8;
+}
+
+.rate-loan {
+  background: #c2f0c2;
+}
+
+.four-fee {
+  background: #b2ebf2;
+}
+
+.total-pay {
+  background: #8df38b;
+}
