@@ -16,10 +16,10 @@ export const LoanSummary = ({ amount, month, days, fee }) => {
 
   return (
     <div className="loan-summary-container">
-      <label className="loan-summary-group-label">
+      <div className="loan-summary-group">
         <img src={finance} alt="Money icon"></img>
         <h2 className="loan-summary-title">{CONSTANTS.LOAN_SUMMARY}</h2>
-      </label>
+      </div>
       <div className="loan-summary-details">
         <div className="card-summary amount">
           <label>

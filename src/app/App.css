@@ -21,7 +21,7 @@
 }
 .simulator-container {
   display: flex;
-  align-items: flex-start;
+  align-items: normal;
   justify-content: center;
   padding: 20px;
   gap: 20px;

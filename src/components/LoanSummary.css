@@ -1,6 +1,5 @@
 .loan-summary-container {
   width: 50%;
-  height: 300px;
   display: flex;
   flex-direction: column;
   background-color: #f3f3f4;
@@ -8,14 +7,14 @@
   padding: 20px;
 }
 
-.loan-summary-group-label {
+.loan-summary-group {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
 .loan-summary-title {
-  font-family: "Montserrat-Regular", sans-serif;
+  font-family: "Montserrat-SemiBold", sans-serif;
   color: #111827;
   font-size: 1.125rem;
   margin: 0;
@@ -24,13 +23,14 @@
 .loan-summary-details {
   display: flex;
   flex-direction: row;
-  height: 90px;
+  height: 95px;
   padding: 20px 0 0;
   gap: 20px;
 }
 
 .value-loan-summary {
   margin: 5px 0 0;
+  font-size: 1.5rem;
 }
 
 .card-summary {

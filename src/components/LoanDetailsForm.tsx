@@ -3,28 +3,49 @@ import "./LoanDetailsForm.css";
 import money from "../assets/img/money.svg";
 import launch from "../assets/img/launch.svg";
 import restart from "../assets/img/restart.svg";
+import { useEffect, useState } from "react";
 
 export const LoanDetailsForm = ({
   amount,
   month,
   days,
   fee,
+  setShowComponent,
   setAmount,
   setMonth,
   setDays,
   setFee,
 }) => {
+  const [activeButtonGenerate, setActiveButtonGenerate] = useState(false);
+  const [activeButtonRestart, setActiveButtonRestart] = useState(false);
+
+  useEffect(() => {
+    if (amount && month && fee) {
+      setActiveButtonGenerate(true);
+    }
+    if (amount || month || days || fee) {
+      setActiveButtonRestart(true);
+    }
+  }, [amount, month, days, fee]);
   const resetForm = () => {
+    setShowComponent(false);
+    setActiveButtonGenerate(false);
+    setActiveButtonRestart(false);
     setAmount("");
     setMonth("");
+    setDays("");
     setFee("");
+  };
+
+  const handleShowComponent = () => {
+    setShowComponent(true);
   };
   return (
     <div className="loan-details-container">
-      <label className="loan-details-group-label">
+      <div className="loan-details-group">
         <img src={money} alt="Money icon"></img>
         <h2 className="loan-details-title">{CONSTANTS.DATA_LOAN}</h2>
-      </label>
+      </div>
       <form className="loan-details-form">
         <div className="form-group">
           <label className="loan-details-label">{CONSTANTS.LOAN_AMOUNT}</label>
@@ -92,11 +113,23 @@ export const LoanDetailsForm = ({
         </div>
       </form>
       <div className="loan-details-buttons">
-        <button className="button-generate">
-          <img src={launch} alt="Cohete icon" />
-          Simular préstamo
+        <button
+          className={
+            activeButtonGenerate
+              ? "button-generate"
+              : "button-generate-disabled"
+          }
+          onClick={handleShowComponent}
+        >
+          <img src={launch} alt="Whatsapp icon" />
+          Solicitar préstamo
         </button>
-        <button className="button-restart" onClick={resetForm}>
+        <button
+          className={
+            activeButtonRestart ? "button-restart" : "button-restart-disabled"
+          }
+          onClick={resetForm}
+        >
           <img src={restart} alt="Restart icon" />
           Reiniciar simulación
         </button>

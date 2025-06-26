@@ -12,6 +12,14 @@ export const CONSTANTS = {
   INTEREST_RATE_BANK: "Tasa de interés:",
   FOUR_1000: "4x100:",
   TOTAL_TO_PAY: "Total a pagar:",
+  TABLE_AMORTIZATION: "Simulación de cuotas",
+  TOTAL_FINISH: "Total",
+};
+
+export const redirectToWhatsApp = () => {
+  window.open(
+    "https://api.whatsapp.com/send?phone=+573012880707&text=Quiero%20solicitar%20un%20pr%C3%A9stamo%20con%20ustedes!"
+  );
 };
 
 export const formatCurrency = (value: string | number): string => {
@@ -88,4 +96,76 @@ export const calculateTotalInterest = (
   }
 
   return Math.round(totalInterest);
+};
+
+export const capitalPayment = (amount, months) => {
+  const parseAmount = parseCurrency(amount);
+  return parseAmount / months;
+};
+
+export const pendingAmount = (
+  amount: string,
+  months: number,
+  cuota: number
+): number => {
+  const parseAmount = parseCurrency(amount);
+  return parseAmount - capitalPayment(amount, months) * cuota;
+};
+
+export const generateInterestByMonth = (
+  amount: string,
+  months: number,
+  days: number = 0,
+  fee: string
+): number[] => {
+  const parseAmount = parseCurrency(amount);
+  const parseFee = parseCurrency(fee);
+  const interestRate = 0.0668; // mensual
+  const dailyRate = interestRate / 30;
+  const capitalPayment = parseAmount / months;
+
+  let balance = parseAmount;
+  const interests: number[] = [];
+
+  for (let i = 1; i <= months; i++) {
+    let interest = balance * interestRate;
+
+    // Si es el primer mes, sumamos la cuota del retiro y el interés por días adicionales
+    if (i === 1) {
+      if (days > 0) {
+        const extraInterest = balance * dailyRate * days;
+        interest += extraInterest;
+      }
+      interest += parseFee;
+    }
+
+    interests.push(Math.round(interest));
+    balance -= capitalPayment;
+  }
+
+  return interests;
+};
+
+export const generateTax4x1000ByMonth = (
+  amount: string,
+  months: number,
+  interests: number[]
+): number[] => {
+  const parseAmount = parseCurrency(amount);
+  const capital = capitalPayment(amount, months);
+  const taxes: number[] = [];
+
+  for (let i = 1; i <= months; i++) {
+    if (i === 1) {
+      // Primer mes: se cobra el 4x1000 sobre el monto total
+      taxes.push(Math.round(parseAmount * 0.004));
+    } else {
+      // Meses siguientes: se cobra sobre capital + interés del mes
+      const interest = interests[i - 1]; // interés correspondiente
+      const base = capital + interest;
+      taxes.push(Math.round(base * 0.004));
+    }
+  }
+
+  return taxes;
 };

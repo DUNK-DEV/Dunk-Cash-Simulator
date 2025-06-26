@@ -1,6 +1,5 @@
 .loan-details-container {
   width: 30%;
-  height: 300px;
   display: flex;
   flex-direction: column;
   background-color: #f3f3f4;
@@ -8,7 +7,7 @@
   padding: 20px;
 }
 
-.loan-details-group-label {
+.loan-details-group {
   display: flex;
   align-items: center;
 }
@@ -24,6 +23,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 10px 0;
 }
 
@@ -42,7 +42,6 @@
 
 .loan-details-input {
   height: 30px;
-  min-width: 220px;
   border-radius: 8px;
   font-family: "Montserrat-Regular", sans-serif;
   font-size: 0.875rem;
@@ -58,7 +57,9 @@
 }
 
 .button-generate,
-.button-restart {
+.button-generate-disabled,
+.button-restart,
+.button-restart-disabled {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,11 +68,18 @@
   height: 50px;
   font-family: "Montserrat-SemiBold", sans-serif;
   font-size: 0.875rem;
+  color: #111827;
   background: #5dae21;
   border: none;
   border-radius: 12px;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+}
+
+.button-generate-disabled,
+.button-restart-disabled {
+  background: #d1d5db;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 .button-restart {

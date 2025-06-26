@@ -5,12 +5,14 @@ import { LoanSummary } from "../components/LoanSummary";
 import iconCash from "../assets/img/icon.png";
 import { CONSTANTS } from "../common/constants";
 import { useState } from "react";
+import { TableSimulation } from "../components/TableSimulation";
 
 function App() {
   const [amount, setAmount] = useState("");
   const [month, setMonth] = useState("");
   const [days, setDays] = useState("");
   const [fee, setFee] = useState("");
+  const [showComponent, setShowComponent] = useState(false);
   return (
     <>
       <div className="simulator-header">
@@ -25,13 +27,19 @@ function App() {
           month={month}
           days={days}
           fee={fee}
+          setShowComponent={setShowComponent}
           setAmount={setAmount}
           setMonth={setMonth}
           setDays={setDays}
           setFee={setFee}
         />
-        <LoanSummary amount={amount} month={month} days={days} fee={fee} />
+        {showComponent && (
+          <LoanSummary amount={amount} month={month} days={days} fee={fee} />
+        )}
       </div>
+      {showComponent && (
+        <TableSimulation amount={amount} month={month} days={days} fee={fee} />
+      )}
     </>
   );
 }

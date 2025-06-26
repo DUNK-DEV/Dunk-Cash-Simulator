@@ -27,7 +27,7 @@
   border-radius: 50%;
 }
 
-:root {
+body {
   color: rgba(255, 255, 255, 0.87);
   background: linear-gradient(to bottom right, #0f172a, #000);
   height: 100dvh;

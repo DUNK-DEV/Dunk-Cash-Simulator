@@ -1,0 +1,48 @@
+.simulation-table-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.simulation-table-group {
+  display: flex;
+  flex-direction: column;
+  width: 79%;
+  background-color: #f3f3f4;
+  padding: 20px;
+  border-radius: 12px;
+  gap: 5px;
+}
+
+.simulation-table-title-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0 0 20px 0;
+}
+
+.simulation-table-title {
+  font-family: "Montserrat-SemiBold", sans-serif;
+  color: #111827;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.simulation-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+th {
+  font-family: "Montserrat-SemiBold", sans-serif;
+  color: #111827;
+  font-size: 1rem;
+}
+
+td {
+  font-family: "Montserrat-Regular", sans-serif;
+  color: #111827;
+  font-size: 1rem;
+}
