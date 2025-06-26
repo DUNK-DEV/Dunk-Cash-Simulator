@@ -1,69 +1,93 @@
-# React + TypeScript + Vite
+# 💰 Dunkify - Simulador de Préstamos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dunkify es una aplicación web interactiva que permite simular un préstamo ingresando el monto solicitado, el plazo en meses y la comisión de retiro. Calcula automáticamente el total a pagar y otros datos clave del préstamo. Ideal para quienes desean visualizar fácilmente el impacto de un crédito antes de tomar una decisión.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖼️ Vista previa
 
-## Expanding the ESLint configuration
+![Dunkify Preview](./src/assets/img/Dunkify.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Funcionalidades
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- 💸 Ingreso de monto solicitado con formato de moneda
+- 📆 Selección del plazo en meses (de 1 a 24)
+- 📊 Cálculo automático de:
+  - Comisión por retiro
+  - 4x1000
+  - Interés bancario fijo (6.68%)
+  - Total a pagar
+- 🧮 Máscara en inputs para mejor experiencia de usuario
+- 🖼️ Interfaz moderna y responsiva
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tecnologías utilizadas
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React 19**
+- **Vite** (para desarrollo rápido)
+- **TypeScript**
+- CSS puro con estilos personalizados
+- Tipografías personalizadas (Montserrat)
+- Imágenes SVG para íconos visuales
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📦 Instalación
+
+1. Clona el repositorio:
+
+\`\`\`bash
+git clone https://github.com/tu-usuario/dunkify.git
+cd dunkify
+\`\`\`
+
+2. Instala las dependencias:
+
+\`\`\`bash
+npm install
+\`\`\`
+
+3. Inicia la app en modo desarrollo:
+
+\`\`\`bash
+npm run dev
+\`\`\`
+
+4. Abre tu navegador en `http://localhost:5173`
+
+---
+
+## 📁 Estructura de carpetas (resumen)
+
+\`\`\`
+src/
+│
+├── assets/ # Íconos e imágenes
+├── components/ # Componentes React (LoanDetailsForm, LoanSummary)
+├── common/ # Constantes y utilidades compartidas
+├── app/ # Entrada principal (App.tsx)
+├── index.css # Estilos globales
+└── main.tsx # Punto de entrada de React
+\`\`\`
+
+---
+
+## 📌 Notas adicionales
+
+- La app está optimizada para funcionar bien en resoluciones medianas y grandes.
+- El interés es fijo por ahora, pero se puede ajustar fácilmente para simular tasas variables.
+
+---
+
+## 🤝 Contribuciones
+
+¡Son bienvenidas! Abre un issue o envía un pull request si quieres mejorar la app.
+
+---
+
+## 📄 Licencia
+
+MIT © [DUNK DEV]
