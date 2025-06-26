@@ -66,3 +66,18 @@
 .total-pay {
   background: #8df38b;
 }
+
+@media (max-width: 1024px) {
+  .loan-summary-container {
+    width: 100%;
+  }
+  .loan-summary-details {
+    height: 80px;
+  }
+  .card-summary {
+    font-size: 0.625rem;
+  }
+  .value-loan-summary {
+    font-size: 1rem;
+  }
+}

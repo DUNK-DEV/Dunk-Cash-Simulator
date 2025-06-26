@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 0 20px 0;
 }
 
 .simulation-table-group {
@@ -45,4 +46,19 @@ td {
   font-family: "Montserrat-Regular", sans-serif;
   color: #111827;
   font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .simulation-table-group {
+    width: 90%;
+  }
+  th {
+    font-size: 0.625rem;
+    white-space: nowrap;
+  }
+
+  td {
+    font-size: 0.625rem;
+    white-space: nowrap;
+  }
 }
