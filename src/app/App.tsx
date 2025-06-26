@@ -9,6 +9,7 @@ import { useState } from "react";
 function App() {
   const [amount, setAmount] = useState("");
   const [month, setMonth] = useState("");
+  const [days, setDays] = useState("");
   const [fee, setFee] = useState("");
   return (
     <>
@@ -22,12 +23,14 @@ function App() {
         <LoanDetailsForm
           amount={amount}
           month={month}
+          days={days}
           fee={fee}
           setAmount={setAmount}
           setMonth={setMonth}
+          setDays={setDays}
           setFee={setFee}
         />
-        <LoanSummary amount={amount} month={month} fee={fee} />
+        <LoanSummary amount={amount} month={month} days={days} fee={fee} />
       </div>
     </>
   );

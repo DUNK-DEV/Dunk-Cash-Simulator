@@ -27,6 +27,13 @@
   padding: 10px 0;
 }
 
+.form-group-month-days {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
 .loan-details-label {
   font-family: "Montserrat-SemiBold", sans-serif;
   color: #4d5664;
@@ -35,6 +42,7 @@
 
 .loan-details-input {
   height: 30px;
+  min-width: 220px;
   border-radius: 8px;
   font-family: "Montserrat-Regular", sans-serif;
   font-size: 0.875rem;

@@ -7,11 +7,18 @@ import restart from "../assets/img/restart.svg";
 export const LoanDetailsForm = ({
   amount,
   month,
+  days,
   fee,
   setAmount,
   setMonth,
+  setDays,
   setFee,
 }) => {
+  const resetForm = () => {
+    setAmount("");
+    setMonth("");
+    setFee("");
+  };
   return (
     <div className="loan-details-container">
       <label className="loan-details-group-label">
@@ -33,20 +40,39 @@ export const LoanDetailsForm = ({
             required
           />
         </div>
-        <div className="form-group">
-          <label className="loan-details-label">{CONSTANTS.LOAN_TERM}</label>
-          <input
-            className="loan-details-input"
-            type="number"
-            id="month"
-            name="month"
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-            min={1}
-            max={24}
-            placeholder="Máximo 24 meses"
-            required
-          />
+        <div className="form-group-month-days">
+          <div className="form-group">
+            <label className="loan-details-label">{CONSTANTS.LOAN_TERM}</label>
+            <input
+              className="loan-details-input"
+              type="number"
+              id="month"
+              name="month"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+              min={1}
+              max={24}
+              placeholder="Máximo 24 meses"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="loan-details-label">
+              {CONSTANTS.DAYS_ADITIONAL}
+            </label>
+            <input
+              className="loan-details-input"
+              type="number"
+              id="days"
+              name="days"
+              value={days}
+              onChange={(e) => setDays(e.target.value)}
+              min={1}
+              max={30}
+              placeholder="Máximo 30 días"
+              required
+            />
+          </div>
         </div>
         <div className="form-group">
           <label className="loan-details-label">
@@ -58,7 +84,7 @@ export const LoanDetailsForm = ({
             id="fee"
             name="fee"
             value={fee}
-            maxLength={6}
+            maxLength={8}
             onChange={(e) => setFee(formatCurrency(e.target.value))}
             placeholder="$0"
             required
@@ -70,7 +96,7 @@ export const LoanDetailsForm = ({
           <img src={launch} alt="Cohete icon" />
           Simular préstamo
         </button>
-        <button className="button-restart">
+        <button className="button-restart" onClick={resetForm}>
           <img src={restart} alt="Restart icon" />
           Reiniciar simulación
         </button>
