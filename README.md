@@ -40,8 +40,7 @@ Dunkify es una aplicación web interactiva que permite simular un préstamo ingr
 1. Clona el repositorio:
 
 \`\`\`bash
-git clone https://github.com/tu-usuario/dunkify.git
-cd dunkify
+git clone https://github.com/DUNK-DEV/Dunkify.git
 \`\`\`
 
 2. Instala las dependencias:
