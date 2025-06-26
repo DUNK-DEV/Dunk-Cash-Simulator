@@ -6,7 +6,8 @@ Dunkify es una aplicación web interactiva que permite simular un préstamo ingr
 
 ## 🖼️ Vista previa
 
-![Dunkify Preview](./src/assets/img/Dunkify.png)
+![Dunkify Desktop Preview](./src/assets/img/Dunkify.png)
+![Dunkify Responsive Preview](./src/assets/img/DunkifyMobile.png)
 
 ---
 
