@@ -122,7 +122,7 @@ export const LoanDetailsForm = ({
           onClick={handleShowComponent}
         >
           <img src={launch} alt="Whatsapp icon" />
-          Solicitar préstamo
+          Simular tu préstamo
         </button>
         <button
           className={
