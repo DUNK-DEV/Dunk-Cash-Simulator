@@ -11,6 +11,7 @@ function App() {
   const [amount, setAmount] = useState("");
   const [month, setMonth] = useState("");
   const [days, setDays] = useState("");
+  const [rate, setRate] = useState("");
   const [fee, setFee] = useState("");
   const [showComponent, setShowComponent] = useState(false);
   return (
@@ -26,19 +27,33 @@ function App() {
           amount={amount}
           month={month}
           days={days}
+          rate={rate}
           fee={fee}
           setShowComponent={setShowComponent}
           setAmount={setAmount}
           setMonth={setMonth}
           setDays={setDays}
+          setRate={setRate}
           setFee={setFee}
         />
         {showComponent && (
-          <LoanSummary amount={amount} month={month} days={days} fee={fee} />
+          <LoanSummary
+            amount={amount}
+            month={month}
+            days={days}
+            rate={rate}
+            fee={fee}
+          />
         )}
       </div>
       {showComponent && (
-        <TableSimulation amount={amount} month={month} days={days} fee={fee} />
+        <TableSimulation
+          amount={amount}
+          month={month}
+          days={days}
+          rate={rate}
+          fee={fee}
+        />
       )}
     </>
   );

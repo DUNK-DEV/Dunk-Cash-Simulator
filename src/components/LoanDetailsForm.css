@@ -27,10 +27,8 @@
   padding: 10px 0;
 }
 
-.form-group-month-days {
+.form-group-two-columns {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   gap: 10px;
 }
 
@@ -42,6 +40,7 @@
 
 .loan-details-input {
   height: 30px;
+  width: 100%;
   border-radius: 8px;
   font-family: "Montserrat-Regular", sans-serif;
   font-size: 0.875rem;

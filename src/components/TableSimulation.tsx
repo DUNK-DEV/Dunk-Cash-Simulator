@@ -12,13 +12,13 @@ import {
 import "./TableSimulation.css";
 import chart from "../assets/img/chart.svg";
 
-export const TableSimulation = ({ amount, month, days, fee }) => {
-  const interestAmount = calculateTotalInterest(amount, month, days);
+export const TableSimulation = ({ amount, month, days, rate, fee }) => {
+  const interestAmount = calculateTotalInterest(amount, month, days, rate);
   const convertFee = parseCurrency(fee);
   const totalInterest = interestAmount + convertFee;
-  const interests = generateInterestByMonth(amount, month, days, fee);
+  const interests = generateInterestByMonth(amount, month, days, rate, fee);
   const taxes4x1000 = generateTax4x1000ByMonth(amount, month, interests);
-  const calc4x1000 = calculate4x1000(amount, month);
+  const calc4x1000 = calculate4x1000(amount, month, rate);
   return (
     <>
       <div className="simulation-table-container">

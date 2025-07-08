@@ -7,7 +7,7 @@ export const CONSTANTS = {
   DAYS_ADITIONAL: "Días adicionales:",
   LOAN_SUMMARY: "Resumen del préstamo",
   AMOUNT_SOLICITED: "Monto solicitado:",
-  WITHDRAWAL_FEE: "Comisión del retiro:",
+  WITHDRAWAL_FEE: "Comisión x retiro:",
   TIME_TO_PAY: "Tiempo para pagar:",
   INTEREST_RATE_BANK: "Tasa de interés:",
   FOUR_1000: "4x100:",
@@ -48,7 +48,11 @@ export const parseCurrency = (value: string): number => {
   return parseFloat(value.replace(/\./g, "").replace(/[^0-9]/g, "")) || 0;
 };
 
-export const calculate4x1000 = (amount: string, months: number): number => {
+export const calculate4x1000 = (
+  amount: string,
+  months: number,
+  rate: number
+): number => {
   const parseAmount = parseCurrency(amount);
   const capitalPayment = parseAmount / months;
 
@@ -59,7 +63,7 @@ export const calculate4x1000 = (amount: string, months: number): number => {
     if (i === 1) {
       totalTax += parseAmount * 0.004; // 4x1000 on the total amount
     } else {
-      const interestMonthly = pendingAmount * 0.0668; // 6.68% interest rate
+      const interestMonthly = pendingAmount * (rate / 100); // 6.68% interest rate
       const base = capitalPayment + interestMonthly;
       totalTax += Math.round(base * 0.004);
     }
@@ -72,10 +76,11 @@ export const calculate4x1000 = (amount: string, months: number): number => {
 export const calculateTotalInterest = (
   amount: string,
   months: number,
-  days: number = 0
+  days: number = 0,
+  rate
 ): number => {
   const parseAmount = parseCurrency(amount);
-  const interestRate = 0.0668;
+  const interestRate = rate / 100;
   const dailyRate = interestRate / 30;
   const capitalPayment = parseAmount / months;
 
@@ -116,11 +121,12 @@ export const generateInterestByMonth = (
   amount: string,
   months: number,
   days: number = 0,
+  rate,
   fee: string
 ): number[] => {
   const parseAmount = parseCurrency(amount);
   const parseFee = parseCurrency(fee);
-  const interestRate = 0.0668; // mensual
+  const interestRate = rate / 100; // mensual
   const dailyRate = interestRate / 30;
   const capitalPayment = parseAmount / months;
 

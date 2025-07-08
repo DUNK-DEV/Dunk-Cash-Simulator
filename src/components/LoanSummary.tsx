@@ -8,9 +8,9 @@ import {
 } from "../common/constants";
 import finance from "../assets/img/finance.svg";
 
-export const LoanSummary = ({ amount, month, days, fee }) => {
-  const interestAmount = calculateTotalInterest(amount, month, days);
-  const calc4x1000 = calculate4x1000(amount, month);
+export const LoanSummary = ({ amount, month, days, rate, fee }) => {
+  const interestAmount = calculateTotalInterest(amount, month, days, rate);
+  const calc4x1000 = calculate4x1000(amount, month, rate);
   const totalToPay =
     parseCurrency(amount) + parseCurrency(fee) + interestAmount + calc4x1000;
 
@@ -47,7 +47,7 @@ export const LoanSummary = ({ amount, month, days, fee }) => {
           <label>
             {CONSTANTS.INTEREST_RATE_BANK}
             <h2 className="value-loan-summary">
-              {amount != "" ? "6.68%" : ""}
+              {rate != "" ? rate + "%" : "0%"}
             </h2>
           </label>
         </div>

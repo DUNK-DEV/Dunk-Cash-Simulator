@@ -9,24 +9,26 @@ export const LoanDetailsForm = ({
   amount,
   month,
   days,
+  rate,
   fee,
   setShowComponent,
   setAmount,
   setMonth,
   setDays,
+  setRate,
   setFee,
 }) => {
   const [activeButtonGenerate, setActiveButtonGenerate] = useState(false);
   const [activeButtonRestart, setActiveButtonRestart] = useState(false);
 
   useEffect(() => {
-    if (amount && month && fee) {
+    if (amount && month && rate && fee) {
       setActiveButtonGenerate(true);
     }
-    if (amount || month || days || fee) {
+    if (amount || month || days || rate || fee) {
       setActiveButtonRestart(true);
     }
-  }, [amount, month, days, fee]);
+  }, [amount, month, days, rate, fee]);
   const resetForm = () => {
     setShowComponent(false);
     setActiveButtonGenerate(false);
@@ -34,6 +36,7 @@ export const LoanDetailsForm = ({
     setAmount("");
     setMonth("");
     setDays("");
+    setRate("");
     setFee("");
   };
 
@@ -61,7 +64,7 @@ export const LoanDetailsForm = ({
             required
           />
         </div>
-        <div className="form-group-month-days">
+        <div className="form-group-two-columns">
           <div className="form-group">
             <label className="loan-details-label">{CONSTANTS.LOAN_TERM}</label>
             <input
@@ -95,21 +98,40 @@ export const LoanDetailsForm = ({
             />
           </div>
         </div>
-        <div className="form-group">
-          <label className="loan-details-label">
-            {CONSTANTS.WITHDRAWAL_FEE}
-          </label>
-          <input
-            className="loan-details-input"
-            type="text"
-            id="fee"
-            name="fee"
-            value={fee}
-            maxLength={8}
-            onChange={(e) => setFee(formatCurrency(e.target.value))}
-            placeholder="$0"
-            required
-          />
+        <div className="form-group-two-columns">
+          <div className="form-group">
+            <label className="loan-details-label">
+              {CONSTANTS.INTEREST_RATE_BANK}
+            </label>
+            <input
+              className="loan-details-input"
+              type="number"
+              id="rate"
+              name="rate"
+              value={rate}
+              onChange={(e) => setRate(e.target.value)}
+              min={1}
+              max={10}
+              placeholder="% de interés pactado"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label className="loan-details-label">
+              {CONSTANTS.WITHDRAWAL_FEE}
+            </label>
+            <input
+              className="loan-details-input"
+              type="text"
+              id="fee"
+              name="fee"
+              value={fee}
+              maxLength={8}
+              onChange={(e) => setFee(formatCurrency(e.target.value))}
+              placeholder="$0"
+              required
+            />
+          </div>
         </div>
       </form>
       <div className="loan-details-buttons">
